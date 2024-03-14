@@ -1,0 +1,162 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$ascyt-primary: mat.define-palette(mat.$indigo-palette);
+$ascyt-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$ascyt-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$ascyt-theme: mat.define-light-theme((
+  color: (
+    primary: $ascyt-primary,
+    accent: $ascyt-accent,
+    warn: $ascyt-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($ascyt-theme);
+
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+
+:root {
+    --back: #000000;
+    --back-high: #101010;
+    --back-mid: #303030;
+    --back-low: #505050;
+    --mid: #808080;
+    --front-low: #a0a0a0;
+    --front-mid: #c0c0c0;
+    --front-high: #e0e0e0;
+    --front: #ffffff;
+}
+.dark-theme {
+    --back: #000000;
+    --back-high: #101010;
+    --back-mid: #303030;
+    --back-low: #505050;
+    --mid: #808080;
+    --front-low: #a0a0a0;
+    --front-mid: #c0c0c0;
+    --front-high: #e0e0e0;
+    --front: #ffffff;
+    --link: #0078d7;
+    --link-hover: #005299;
+    transition: 0.2s;
+}
+.light-theme {
+    --back: #ffffff;
+    --back-high: #e0e0e0;
+    --back-mid: #c0c0c0;
+    --back-low: #a0a0a0;
+    --mid: #808080;
+    --front-low: #606060;
+    --front-mid: #404040;
+    --front-high: #202020;
+    --front: #000000;
+    --link: #0d6efd;
+    --link-hover: #0a58ca;
+    transition: 0.2s;
+}
+.what { // ignore this
+    --back: #ff0000;
+    --back-high: #ff8000;
+    --back-mid: #ffff00;
+    --back-low: #00ff00;
+    --mid: #00ffff;
+    --front-low: #0080ff;
+    --front-mid: #0000ff;
+    --front-high: #8000ff;
+    --front: #ff00ff;
+    p {
+        transform: rotate(180deg);
+    }
+    * {
+        border: 1px dotted white;
+        filter:contrast(10);
+    }
+    img {
+        transform: rotate3d(1, 1, 1, 180deg);
+    }
+    a {
+        display: none;
+    }
+}
+
+body {
+    background-color: var(--back);
+    color: var(--front);
+}
+
+a {
+    color: var(--link);
+    transition: 0.2s;
+
+    &:hover {
+        color: var(--link-hover);
+        transition: 0.3s;
+    }
+}
+
+.list-group-item, .list-group-item-action {
+    background-color: var(--back-high);
+    color: var(--front);
+    border: 1px solid var(--back-mid);
+    border-radius: 0;
+
+    transition: 0.2s;
+}
+.list-group-item-action:hover {
+    background-color: var(--back-mid);
+    color: var(--front);
+    transition: 0.2s;
+}
+.list-group-item-action:active {
+    background-color: var(--back-low);
+    color: var(--front);
+    transition: 0.2s;
+}
+
+.tooltip {
+    .tooltip-arrow {
+        display: none;
+    }
+    
+    color: var(--front);
+
+    .tooltip-inner {
+        background-color: var(--back-high);
+        color: var(--front);
+        max-width: fit-content;
+    }
+}
+@keyframes shake-animation {
+  0% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+  20%, 40%, 60%, 80% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake-animation 0.5s infinite;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
