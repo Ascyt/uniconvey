@@ -20,7 +20,7 @@ Takes the content through one input port and evenly divides it, consistently tra
 Similarily to the Splitter, the Sorter takes the content through one input port and filters one specified type of content through one output port,
 while the rest moves along through another output port.
 #### Timer
-info info info 
+Takes the content through one input port and stores it, outputting it again at a steady rate through one output port.
 #### Portal
 Consists of two distinct pieces, one input port and one output port.
 These two pieces do not have to be connected physically, but still transport content effectively from one point to another.
@@ -33,7 +33,8 @@ Generates stone. Upgrades consistenly provide more stone, as well as increasing 
 
 ### Transformers
 #### Crafter
-info info info 
+Takes two types of material through two input ports. If the materials provided align with the given recipe, the crafter combines the materials
+into a new item, following the recipe. If the material provided doesn't align, crafting will be halted and the faulty material will promptly be deleted.
 #### Furnace 
 Smelts / Cooks the provided content and returns a specific output.
 #### Enhancer
